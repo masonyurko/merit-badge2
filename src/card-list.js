@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit';
-
-const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
+import '@lrnwebcomponents/meme-maker/meme-maker.js';
+import 'jalen-card/src/jalen-card.js';
+import 'athlete-card2/src/athlete-card2.js';
 
 class CardList extends LitElement {
   static properties = {
@@ -9,78 +10,54 @@ class CardList extends LitElement {
 
   static styles = css`
     :host {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      font-size: calc(10px + 2vmin);
-      color: #1a2b42;
-      max-width: 960px;
-      margin: 0 auto;
-      text-align: center;
-      background-color: var(--card-list-background-color);
-    }
-
-    main {
-      flex-grow: 1;
-    }
-
-    .logo {
-      margin-top: 36px;
-      animation: app-logo-spin infinite 20s linear;
-    }
-
-    @keyframes app-logo-spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .app-footer {
-      font-size: calc(12px + 0.5vmin);
-      align-items: center;
-    }
-
-    .app-footer a {
-      margin-left: 5px;
+      display: inline-block;
     }
   `;
 
-  constructor() {
-    super();
-    this.header = 'My app';
-  }
-
   render() {
     return html`
-      <main>
-        <div class="logo"><img alt="open-wc logo" src=${logo} /></div>
-        <h1>${this.header}</h1>
-
-        <p>Edit <code>src/CardList.js</code> and save to reload.</p>
-        <a
-          class="app-link"
-          href="https://open-wc.org/guides/developing-components/code-examples/"
-          target="_blank"
-          rel="noopener noreferrer"
+      <jalen-card> </jalen-card>
+      <jalen-card name="Jalen" position="Running Back" top="Cool Guy"
+        ><slot
+          ><ul>
+            <li>Best QB in the League</li>
+          </ul></slot
         >
-          Code examples
-        </a>
-      </main>
-
-      <p class="app-footer">
-        🚽 Made with love by
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/open-wc"
-          >open-wc</a
-        >.
-      </p>
+      </jalen-card>
+      <jalen-card name="Patrick Mahomes" position="Shit" top="Ugly">
+        <slot
+          ><ul>
+            <li>Worst QB in the League</li>
+          </ul></slot
+        >
+      </jalen-card>
+      <jalen-card name="AJ Brown" position="Wide Receiver"> </jalen-card>
+      <jalen-card name="Dallas Goedert" position="Tight End">
+        <slot
+          ><ul>
+            <li>The only Dallas making it to the Superbowl</li>
+          </ul></slot
+        >
+      </jalen-card>
+      <athlete-card2
+        name="Miles Sanders"
+        position="Running Back"
+        toptext="Fast"
+      >
+      </athlete-card2>
+      <athlete-card2 name="Lebron James" position="Power Forward">
+      </athlete-card2>
+      <athlete-card2 name="Dak Prescott" position="Piece of Shit">
+      </athlete-card2>
+      <athlete-card2 name="Drew Doughty" position="Defenceman">
+        <slot
+          ><ul>
+            <li>Overpaid Toothless Wonder</li>
+          </ul></slot
+        >
+      </athlete-card2>
+      <athlete-card2 name="Robert Downy Jr." position="Iron Man">
+      </athlete-card2>
     `;
   }
 }

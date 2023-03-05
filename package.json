@@ -16,7 +16,10 @@
     "start": "web-dev-server"
   },
   "dependencies": {
-    "lit": "^2.0.2"
+    "@lrnwebcomponents/meme-maker": "^4.1.0",
+    "athlete-card2": "^1.0.0",
+    "jalen-card": "^1.2.0",
+    "lit": "^2.6.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",
