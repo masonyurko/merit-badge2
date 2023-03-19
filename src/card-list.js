@@ -3,61 +3,135 @@ import '@lrnwebcomponents/meme-maker/meme-maker.js';
 import 'jalen-card/src/jalen-card.js';
 import 'athlete-card2/src/athlete-card2.js';
 
-class CardList extends LitElement {
-  static properties = {
-    header: { type: String },
-  };
+export class CardList extends LitElement {
+  static get properties() {
+    return {
+      name: {
+        type: String,
+        reflect: true,
+      },
+      fname: { type: String },
+      position: {
+        type: String,
+      },
+      top: { type: String },
+      statsLabel: { type: String },
+      image: { type: String },
+    };
+  }
 
-  static styles = css`
-    :host {
-      display: inline-block;
-    }
-  `;
+  static get styles() {
+    return css`
+      .wrapper {
+        width: 400px;
+        border: 2px solid black;
+        display: inline-flex;
+      }
+
+      .image {
+        width: 400px;
+      }
+
+      .header {
+        text-align: center;
+        font-weight: bold;
+        font-size: 2rem;
+      }
+
+      .header h3:hover {
+        font-style: italic;
+        font-size: 1.1em;
+      }
+
+      .header h3,
+      .header h4 {
+        transition: 0.3s ease-in-out all;
+        margin: 16px;
+        font-style: normal;
+      }
+
+      .buttons button:focus,
+      .buttons button:hover {
+        background-color: rgba(200, 0, 50, 0.5);
+      }
+
+      .buttons button:active {
+        background-color: rgba(50, 0, 200, 0.5);
+      }
+
+      .buttons {
+        display: block;
+      }
+
+      button {
+        padding: 12px;
+        font-size: 32px;
+      }
+
+      details {
+        margin-left: 24px;
+        padding: 10px;
+      }
+
+      .details summary {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      @media only screen and (max-width: 1200px) {
+        .wrapper {
+          background-color: blue;
+        }
+      }
+      @media only screen and (max-width: 600px) {
+        .wrapper {
+          background-color: red;
+        }
+      }
+      @media only screen and (max-width: 425px) {
+        .wrapper {
+          font-weight: normal;
+        }
+        .wrapper .header h3 {
+          font-size: 12px;
+        }
+        .wrapper .header h4 {
+          font-size: 10px !important;
+        }
+        details {
+          display: none;
+        }
+      }
+    `;
+  }
+
+  consructor() {
+    super();
+    this.image = new URL('../assets/jalen.jpg', import.meta.url).href;
+    this.name = 'Jalen Hurts';
+    this.position = 'Quarterback';
+    this.top = 'MVP';
+    this.statsLabel = 'Career Stats';
+  }
 
   render() {
     return html`
-      <jalen-card> </jalen-card>
-      <jalen-card name="Jalen" position="Running Back" top="Cool Guy"
-        ><slot
-          ><ul>
-            <li>Best QB in the League</li>
-          </ul></slot
-        >
-      </jalen-card>
-      <jalen-card name="Patrick Mahomes" position="Shit" top="Ugly">
-        <slot
-          ><ul>
-            <li>Worst QB in the League</li>
-          </ul></slot
-        >
-      </jalen-card>
-      <jalen-card name="AJ Brown" position="Wide Receiver"> </jalen-card>
-      <jalen-card name="Dallas Goedert" position="Tight End">
-        <slot
-          ><ul>
-            <li>The only Dallas making it to the Superbowl</li>
-          </ul></slot
-        >
-      </jalen-card>
-      <athlete-card2
-        name="Miles Sanders"
-        position="Running Back"
-        toptext="Fast"
-      >
-      </athlete-card2>
-      <athlete-card2 name="Lebron James" position="Power Forward">
-      </athlete-card2>
-      <athlete-card2 name="Dak Prescott" position="Piece of Shit">
-      </athlete-card2>
-      <athlete-card2 name="Drew Doughty" position="Defenceman">
-        <slot
-          ><ul>
-            <li>Overpaid Toothless Wonder</li>
-          </ul></slot
-        >
-      </athlete-card2>
-      <athlete-card2 name="Robert Downy Jr." position="Iron Man">
-      </athlete-card2>
+      <div class="wrapper">
+        <div class="container">
+          <meme-maker image-url="${this.image}" top-text="${this.top}">
+          </meme-maker>
+          <div class="header">
+            <h3>${this.name}</h3>
+            <h4>${this.position}</h4>
+          </div>
+          <details class="details">
+            <summary>${this.statsLabel}</summary>
+            <div>
+              <slot></slot>
+            </div>
+          </details>
+        </div>
+      </div>
     `;
   }
 }
