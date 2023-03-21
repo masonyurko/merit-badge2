@@ -105,7 +105,7 @@ export class CardList extends LitElement {
     `;
   }
 
-  consructor() {
+  constructor() {
     super();
     this.image = new URL('../assets/jalen.jpg', import.meta.url).href;
     this.name = 'Jalen Hurts';

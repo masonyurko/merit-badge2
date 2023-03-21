@@ -26,18 +26,18 @@
   <team-roster></team-roster>
 
   <div class="buttons">
-    <button class="duplicate">Duplicate last card</button>
+    <button class="duplicate">Duplicate</button>
     <button class="modifytitle">Change Name</button>
     <button id="deletelastcard">Delete</button>
-    <button data-toggle-btn>Toggle stats</button>
+    <button data-toggle-btn>Toggle Stats</button>
   </div>
   <div id="app">
-    <jalen-card top="MVP">
+    <card-list top="MVP">
       <ul>
         <li>(SHOULD'VE BEEN) Superbowl MVP</li>
         <li>BEST QB IN THE LEAGUE</li>
       </ul>
-    </jalen-card>
+    </card-list>
  </div>
  <script type="module">
   import "./src/card-list.js";
@@ -73,8 +73,8 @@ document.querySelector('.modifytitle').addEventListener('click', function(e) {
 document.querySelector('#deletelastcard').addEventListener('click', function(e) {
   let wantsTo = confirm("Are you sure?");
   if (wantsTo) {
-    if (document.querySelector('#app :last-child') !== document.querySelector('card-list')) {
-      document.querySelector('#app :last-child').remove();      
+    if (document.querySelector('#app card-list:last-child') !== document.querySelector('card-list')) {
+      document.querySelector('#app card-list:last-child').remove();      
     }
     else {
       alert("YOU CAN NOT DELETE JALEN!!!!");

@@ -57,13 +57,13 @@ export class TeamRoster extends LitElement {
         ${this.players.map(
           player => html`
             <div class="item">
-              <jalen-card
+              <card-list
                 name="${player.name}"
                 position="${player.position}"
                 top="${player.top}"
                 statsLabel="${player.statsLabel}"
                 image="${player.image}"
-              ></jalen-card>
+              ></card-list>
             </div>
           `
         )}
