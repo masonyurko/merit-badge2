@@ -20,6 +20,7 @@
     "@lrnwebcomponents/meme-maker": "^4.1.0",
     "@lrnwebcomponents/simple-icon": "^4.2.0",
     "jquery": "^3.6.4",
+    "lettering": "^0.4.1",
     "lettering.js": "^0.8.2",
     "lit": "^2.6.1"
   },
