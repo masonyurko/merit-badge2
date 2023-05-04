@@ -16,7 +16,9 @@
     "start": "web-dev-server"
   },
   "dependencies": {
+    "@lrnwebcomponents/absolute-position-behavior": "^4.2.0",
     "@lrnwebcomponents/meme-maker": "^4.1.0",
+    "@lrnwebcomponents/simple-icon": "^4.2.0",
     "athlete-card2": "^1.0.0",
     "jalen-card": "^1.2.0",
     "lit": "^2.6.1"

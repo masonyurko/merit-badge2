@@ -1,9 +1,9 @@
 import { html } from 'lit';
 import { fixture, expect } from '@open-wc/testing';
 
-import '../src/card-list.js';
+import '../src/merit-badge.js';
 
-describe('CardList', () => {
+describe('MeritBadge', () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`<card-list></card-list>`);

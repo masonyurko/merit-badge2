@@ -8,80 +8,34 @@
   <base href="/">
 
   <style>
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      background-color: #ededed;
-    }
-    jalen-card img {
-    max-width: 200px;
-  }
   </style>
-  <title>card-list</title>
+  <title>merit-badge</title>
 </head>
 
 <body>
-  <team-roster></team-roster>
+  <merit-badge title1="Code God" date="04-23-02" icon="hardware:keyboard" iconcolor="blue" newcolor="red">
+  </merit-badge>
 
-  <div class="buttons">
-    <button class="duplicate">Duplicate</button>
-    <button class="modifytitle">Change Name</button>
-    <button id="deletelastcard">Delete</button>
-    <button data-toggle-btn>Toggle Stats</button>
-  </div>
-  <div id="app">
-    <card-list top="MVP">
-      <ul>
-        <li>(SHOULD'VE BEEN) Superbowl MVP</li>
-        <li>BEST QB IN THE LEAGUE</li>
-      </ul>
-    </card-list>
- </div>
- <script type="module">
-  import "./src/card-list.js";
-  import "./src/team-roster.js";
-</script>
-<script>    
-  // toggle the 1ST instance of the stats
-  document.querySelector('button[data-toggle-btn]').addEventListener('click', (e) => {
-    const details = document.querySelector('card-list').shadowRoot.querySelector('details')
-    console.log(details);
-    if (details.getAttribute('open')) {
-      details.removeAttribute('open');
-    }
-    else {
-      details.setAttribute('open','open');    
-    }
-  });
-  // duplicate the first item
-  document.querySelector('.duplicate').addEventListener('click', function(e) {
-  const itemToClone = document.querySelector('card-list').cloneNode();
-  document.querySelector('#app').appendChild(itemToClone);
-});
+  <merit-badge title1="IST" date="08-20-23" icon="hardware:computer" iconcolor="green" newcolor="yellow">
+  </merit-badge>
 
-// modify name of first item
-document.querySelector('.modifytitle').addEventListener('click', function(e) {
-  let name = prompt("Name Jalen....");
-  if (name) {
-    document.querySelector('card-list').name = name;
-  }
-});
+  <merit-badge title1="Weightlifting" date="03-14-23" icon="places:fitness-center" iconcolor="black" newcolor="black">
+  </merit-badge>
 
-// delete the last item
-document.querySelector('#deletelastcard').addEventListener('click', function(e) {
-  let wantsTo = confirm("Are you sure?");
-  if (wantsTo) {
-    if (document.querySelector('#app card-list:last-child') !== document.querySelector('card-list')) {
-      document.querySelector('#app card-list:last-child').remove();      
-    }
-    else {
-      alert("YOU CAN NOT DELETE JALEN!!!!");
-    }
-  }
-});
-</script>
+  <merit-badge title1="Driving" date="05-03-2023" icon="maps:direction-car" iconcolor="orange" newcolor="blue">
+  </merit-badge>
+
+  <merit-badge title1="Reading" date="01-25-23" icon="book" iconcolor="yellow" newcolor="green">
+  </merit-badge>
+
+  <script type="module" src="./src/merit-badge.js"></script>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/jquery/dist/lettering.js">
+  
+  $(function() {
+    $(".date").lettering();
+  });  
+  </script>
 </body>
 
 </html>
